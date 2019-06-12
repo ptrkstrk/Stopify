@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".PlayMusicActivity"
+        android:gravity="center">
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/current_album"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/current_song_title"
+            android:textAlignment="center"
+            android:layout_marginStart="@dimen/screen_edge_margin"
+            android:layout_marginEnd="@dimen/screen_edge_margin"
+            android:textColor="@color/textColorPrimary"/>
+    <ImageView
+            android:layout_width="@dimen/album_cover_width"
+            android:layout_height="@dimen/album_cover_height"
+            android:src="@mipmap/default_img_hq"
+            android:id="@+id/current_album_art" android:layout_margin="@dimen/default_margin"/>
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/current_song_title"
+            android:textSize="18sp" android:textStyle="bold"
+            android:layout_marginEnd="@dimen/screen_edge_margin"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginStart="@dimen/screen_edge_margin"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" android:textColor="@color/textColorPrimary"/>
+    <TextView
+            android:layout_height="wrap_content"
+            android:id="@+id/current_artist"
+            android:textSize="16sp" app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="@dimen/screen_edge_margin"
+            app:layout_constraintTop_toBottomOf="@+id/current_song_title"
+            android:layout_width="wrap_content"
+            android:layout_marginStart="@dimen/screen_edge_margin"
+            android:layout_marginTop="@dimen/default_margin"
+            android:textColor="@color/textColorPrimary"/>
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:id="@+id/constraintLayout"
+            tools:layout_editor_absoluteY="501dp" app:layout_constraintStart_toStartOf="parent">
+        <SeekBar
+                android:id="@+id/timeBar"
+                android:layout_width="@dimen/seek_bar_width"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/default_margin"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginEnd="@dimen/default_margin"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="@dimen/default_margin"/>
+        <TextView
+                android:id="@+id/elapsedTimeLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="@+id/timeBar"
+                android:layout_marginBottom="@dimen/default_margin" app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/timeBar"/>
+        <TextView
+                android:id="@+id/remainingTimeLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/timeBar"
+                app:layout_constraintEnd_toEndOf="@+id/timeBar"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        <ImageView
+                android:layout_width="@dimen/dot_width"
+                android:layout_height="@dimen/dot_height"
+                app:srcCompat="@mipmap/dot_img" android:id="@+id/shuffle_dot"
+                android:layout_marginBottom="@dimen/small_margin"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/shuffle_btn"
+                app:layout_constraintStart_toStartOf="@+id/shuffle_btn" android:visibility="invisible"
+                app:layout_constraintTop_toBottomOf="@+id/shuffle_btn"/>
+        <ImageView
+                android:layout_width="@dimen/dot_width"
+                android:layout_height="@dimen/dot_height" app:srcCompat="@mipmap/dot_img" android:id="@+id/replay_dot"
+                app:layout_constraintStart_toStartOf="@+id/replay_btn"
+                android:layout_marginStart="@dimen/screen_edge_margin"
+                app:layout_constraintEnd_toEndOf="@+id/replay_btn"
+                android:layout_marginBottom="@dimen/small_margin"
+                app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintHorizontal_bias="0.0"
+                android:visibility="invisible"
+                app:layout_constraintTop_toBottomOf="@+id/replay_btn"/>
+        <Button
+                android:layout_width="@dimen/secondary_button_width"
+                android:layout_height="@dimen/secondary_button_height" android:id="@+id/shuffle_btn"
+                android:background="@mipmap/shuffle_img"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginEnd="@dimen/screen_edge_margin" android:layout_marginTop="@dimen/default_margin"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginBottom="@dimen/default_margin"
+                app:layout_constraintBottom_toTopOf="@+id/guideline"/>
+        <Button
+                android:layout_width="@dimen/secondary_button_width"
+                android:layout_height="@dimen/secondary_button_height"
+                android:id="@+id/replay_btn" android:background="@mipmap/replay_img"
+                app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="@dimen/screen_edge_margin"
+                android:layout_marginTop="@dimen/default_margin" app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginBottom="@dimen/default_margin"
+                app:layout_constraintBottom_toTopOf="@+id/guideline"/>
+        <Button
+                android:layout_width="@dimen/main_button_width"
+                android:layout_height="@dimen/main_button_height"
+                android:id="@+id/playPauseButton"
+                android:background="@mipmap/pause_btn"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginEnd="@dimen/default_margin"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="@dimen/default_margin"
+                android:layout_marginTop="@dimen/default_margin"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginBottom="@dimen/default_margin"
+                app:layout_constraintBottom_toTopOf="@+id/guideline"/>
+        <Button
+                android:layout_width="@dimen/main_button_width"
+                android:layout_height="@dimen/main_button_height"
+                android:id="@+id/previous_btn"
+                app:layout_constraintEnd_toStartOf="@+id/playPauseButton"
+                android:layout_marginEnd="@dimen/default_margin"
+                android:background="@mipmap/previous_btn" android:layout_marginTop="@dimen/default_margin"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/replay_btn"
+                android:layout_marginStart="@dimen/default_margin"
+                android:layout_marginBottom="@dimen/default_margin"
+                app:layout_constraintBottom_toTopOf="@+id/guideline"/>
+        <Button
+                android:layout_width="@dimen/main_button_width"
+                android:layout_height="@dimen/main_button_height" android:id="@+id/next_btn"
+                app:layout_constraintStart_toEndOf="@+id/playPauseButton"
+                android:layout_marginStart="@dimen/default_margin"
+                android:background="@mipmap/next_btn"
+                android:layout_marginTop="@dimen/default_margin"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/shuffle_btn"
+                android:layout_marginEnd="@dimen/default_margin"
+                android:layout_marginBottom="@dimen/default_margin"
+                app:layout_constraintBottom_toTopOf="@+id/guideline"/>
+        <androidx.constraintlayout.widget.Guideline android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content" android:id="@+id/guideline"
+                                                    android:orientation="horizontal"
+                                                    app:layout_constraintGuide_percent="0.86"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</LinearLayout>
